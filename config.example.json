@@ -1,0 +1,16 @@
+{
+  "nom": "Prénom Nom",
+  "email": "ton.adresse@gmail.com",
+  "telephone": "06 00 00 00 00",
+  "ecole": "EM Lyon",
+  "cv": "cv/CV.pdf",
+
+  "smtp_serveur": "smtp.gmail.com",
+  "smtp_port": 465,
+  "smtp_mot_de_passe": "mot de passe d'application Gmail (16 lettres)",
+
+  "score_minimum": 3,
+  "inclure_stages": false,
+  "pause_secondes": 60,
+  "max_envois_par_jour": 15
+}
