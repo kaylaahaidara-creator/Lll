@@ -69,6 +69,11 @@ def nettoyer_poste(poste):
     return poste.strip(" -–")
 
 
+def nom_fichier(entreprise):
+    """'Kalia Nature' -> 'kalia-nature'."""
+    return re.sub(r"[^a-z0-9]+", "-", normaliser(entreprise)).strip("-")
+
+
 def charger_config():
     if not FICHIER_CONFIG.exists():
         sys.exit("config.json introuvable : copie config.example.json en config.json et remplis-le.")
@@ -140,7 +145,10 @@ def construire_mail(offre, config):
         "telephone": config["telephone"], "accroche_secteur": accroche(offre),
     }
     objet = (DOSSIER / "modeles/objet.txt").read_text(encoding="utf-8").strip().format(**champs)
-    corps = (DOSSIER / "modeles/lettre.txt").read_text(encoding="utf-8").format(**champs)
+    # Une lettre personnalisée dans modeles/perso/<entreprise>.txt remplace la lettre type.
+    perso = DOSSIER / "modeles/perso" / f"{nom_fichier(offre['entreprise'])}.txt"
+    lettre = perso if perso.exists() else DOSSIER / "modeles/lettre.txt"
+    corps = lettre.read_text(encoding="utf-8").format(**champs)
 
     msg = EmailMessage()
     msg["From"] = f'{config["nom"]} <{config["email"]}>'

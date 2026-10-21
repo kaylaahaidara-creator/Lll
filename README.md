@@ -27,3 +27,7 @@ python3 candidatures.py envoyer     # envoyer (o = oui, n = passer, q = arrêter
 - Les offres Indeed n'affichent pas l'email du recruteur : pour celles-là, cherche l'email RH sur le site de l'entreprise ou sur LinkedIn, ou postule directement via le lien de la colonne `lien`.
 - Relis `modeles/lettre.txt` et adapte-le à ta façon d'écrire : c'est le texte envoyé à toutes les entreprises.
 - Pour ajuster le tri, modifie les listes `MOTS_METIER`, `MOTS_SECTEUR`, `MOTS_JUNIOR` et `MOTS_EXCLUS` en haut de `candidatures.py`, ou `score_minimum` dans `config.json`.
+
+## Lettre personnalisée pour une entreprise
+
+Pour envoyer une lettre spéciale à une entreprise au lieu de la lettre type, crée `modeles/perso/<nom-de-l-entreprise>.txt` (en minuscules, espaces remplacés par des tirets, par ex. `modeles/perso/kalia-nature.txt`). Le logiciel l'utilisera automatiquement pour cette entreprise.
